@@ -1,4 +1,16 @@
-<div class="container-fluid mt-3">
+<div class="container-fluid mt-3" *ngIf="identity">
   <h1>{{page_title}}</h1>
   <hr>
+</div>
+
+<div class="container-fluid mt-3" *ngIf="!identity">
+  <div class="jumbotron">
+    <h1 class="display-4">Bienvenido a FavoVideos!</h1>
+    <p class="lead">Crea tu lista de vídeos favoritos de Youtube para verlos cuando quieras.</p>
+    <hr class="my-4">
+    <p class="lead d-flex justify-content-around">
+      <a class="btn btn-primary btn-lg" [routerLink]="['/login']" role="button">Entrar</a>
+      <a class="btn btn-success btn-lg" [routerLink]="['/registro']" role="button">Registrarme</a>
+    </p>
+  </div>
 </div>

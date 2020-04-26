@@ -1,9 +1,9 @@
 <div class="container">
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark ">
-    <a class="navbar-brand">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" [routerLink]="['/inicio']">
       <img src="assets/images/brand.svg" width="40" height="40" alt="" class="mr-3">
-      Vídeos Favoritos</a>
+      FavoVideos</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,10 +15,15 @@
       </ul>
       <ul class="navbar-nav navbar-right">
         <li class="nav-item">
-          <a class="nav-link">Inicio <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/inicio']" *ngIf="identity">Mis vídeos<span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/guardar-favorito']" *ngIf="identity">Guardar favorito<span
+              class="sr-only">(current)</span></a>
         </li>
 
-        <li class="nav-item dropdown">
+        <!--<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="dropdownCategories" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Categorías
@@ -31,35 +36,32 @@
             </ul>
 
           </div>
-        </li>
+        </li> -->
 
 
         <!--<li class="nav-item" *ngFor="let category of categories">
           <a class="nav-link" >{{ category.name }}</a>
         </li> -->
-        <li class="nav-item">
-          <a class="nav-link">Login</a>
+        <li class="nav-item" *ngIf="!identity">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link">Registro</a>
+        <li class="nav-item" *ngIf="!identity">
+          <a class="nav-link" [routerLink]="['/registro']">Registro</a>
         </li>
         <li class="nav-item">
           <div class="avatar-mask">
             <img src="" alt="">
           </div>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="identity">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            sdsfsdfsdf
+            {{identity.nick}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item">Crear entrada</a>
-            <a class="dropdown-item">Crear categoría</a>
+            <a class="dropdown-item" [routerLink]="['/ajustes']">Ajustes</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item">Mis posts</a>
-            <a class="dropdown-item">Ajustes</a>
-            <a class="dropdown-item">Cerrar sesión</a>
+            <a class="dropdown-item" [routerLink]="['/logout/1']">Cerrar sesión</a>
           </div>
         </li>
       </ul>
@@ -71,6 +73,6 @@
   </nav> <!-- END NAVBAR -->
 
   <!-- CONTENIDO -->
-  <app-home></app-home>
+  <router-outlet></router-outlet>
   <!-- END CONTENIDO -->
 </div>

@@ -9,7 +9,7 @@ export class ErrorComponent implements OnInit {
   public page_title: string;
 
   constructor() {
-    this.page_title = 'La página que buscas no existe';
+    this.page_title = 'ERROR 404';
   }
 
   ngOnInit(): void {}
