@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this.userService.signUp(this.user).subscribe(
+    this.userService.signIn(this.user).subscribe(
       (response) => {
         // console.log(this.user);
         // console.log(response);
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           // form.reset();
 
           // sacar el token
-          this.userService.signUp(this.user, true).subscribe(
+          this.userService.signIn(this.user, true).subscribe(
             (response) => {
               // console.log(response);
               if (!response.status || response.status == 'success') {

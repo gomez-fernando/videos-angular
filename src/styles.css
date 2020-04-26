@@ -11,3 +11,15 @@
 .nav-item.active a.nav-link {
   color: white !important;
 }
+.card-footer .video-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.video-image-not-found {
+  display: flex;
+  justify-content: center;
+}
+.video-image-not-found img {
+  max-width: 50%;
+}

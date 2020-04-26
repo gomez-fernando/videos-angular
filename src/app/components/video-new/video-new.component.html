@@ -1,4 +1,43 @@
 <div class="container-fluid mt-3">
   <h1>{{page_title}}</h1>
   <hr>
+
+  <div *ngIf="status == 'success'" class="alert alert-success col-md-10 offset-md-1 col-lg-8 offset-lg-2 ">
+    Vídeo guardado correctamente.
+  </div>
+  <div *ngIf="status == 'error'" class="alert alert-danger col-md-10 offset-md-1 col-lg-8 offset-lg-2 ">
+    No se han podido guardar el vídeo. Vuelve a intentarlo por favor.
+  </div>
+
+  <form #newVideoForm="ngForm" (ngSubmit)="onSubmit(newVideoForm)"
+    class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 mb-3">
+
+    <div class="form-group">
+      <label for="title">Título</label>
+      <input type="text" #title="ngModel" [(ngModel)]="video.title" required class="form-control" name="title">
+      <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+        El título no es válido.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <textarea #description="ngModel" [(ngModel)]="video.description" required class="form-control"
+        name="description"></textarea>
+      <small *ngIf="!description.valid && description.touched" class="invalid-feedback d-block">
+        La descripción no es válida.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="url">URL de vídeo de YouTube</label>
+      <input type="text" #url="ngModel" [(ngModel)]="video.url" required class="form-control" name="url">
+      <small *ngIf="!url.valid && url.touched" class="invalid-feedback d-block">
+        La url no es válida.
+      </small>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Guardar" [disabled]="newVideoForm.invalid" />
+
+  </form>
 </div>

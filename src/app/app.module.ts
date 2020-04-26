@@ -14,6 +14,10 @@ import { LoginComponent } from './components/login/login.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { VideoNewComponent } from './components/video-new/video-new.component';
 
+import { IdentityGuard } from './services/identity.guard';
+import { UserService } from './services/user.service';
+import { VideoEditComponent } from './components/video-edit/video-edit.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,9 +27,10 @@ import { VideoNewComponent } from './components/video-new/video-new.component';
     LoginComponent,
     UserEditComponent,
     VideoNewComponent,
+    VideoEditComponent,
   ],
   imports: [BrowserModule, routing, FormsModule, HttpClientModule],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, IdentityGuard, UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
