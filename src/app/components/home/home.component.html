@@ -1,6 +1,24 @@
+<!--EN CASO DE NO ESTAR LOGUEADO-->
+<div class="container-fluid mt-3" *ngIf="!identity">
+  <div class="jumbotron">
+    <h1 class="display-4">Bienvenido a FavoVideos!</h1>
+    <p class="lead">Crea tu lista de vídeos favoritos de Youtube para verlos cuando quieras.</p>
+    <hr class="my-4">
+    <p class="lead d-flex justify-content-around">
+      <a class="btn btn-primary btn-lg" [routerLink]="['/login']" role="button">Entrar</a>
+      <a class="btn btn-success btn-lg" [routerLink]="['/registro']" role="button">Registrarme</a>
+    </p>
+  </div>
+</div>
+
+
 <div class="container-fluid mt-3" *ngIf="identity">
   <h1>{{page_title}}</h1>
   <hr>
+
+  <div *ngIf="!videos" class="text-center">
+    Cargando...
+  </div>
 
   <div class="card-columns">
     <article class="card w-100" *ngFor="let video of videos">
@@ -20,13 +38,13 @@
         <!--BOTONES-->
         <div class="video-buttons mt-3">
           <a [routerLink]="['/video', video.id]" class="btn btn-success my-1 mx-1">Ver</a>
-          <a *ngIf="identity && identity.sub == video.user_id" [routerLink]="['/editar-favorito', video.id]"
+          <a *ngIf="identity && identity.sub == video.user.id" [routerLink]="['/editar-favorito', video.id]"
             class="btn btn-warning my-1 mx-1">Editar</a>
           <!-- <a *ngIf="identity && identity.sub == video.user_id" (click)="deletePost(video.id)"
             class="btn btn-danger my-1 mx-1">Borrar</a> -->
 
           <!-- Button trigger modal -->
-          <button type="button" *ngIf="identity && identity.sub == video.user_id" class="btn btn-danger my-1 mx-1"
+          <button type="button" *ngIf="identity && identity.sub == video.user.id" class="btn btn-danger my-1 mx-1"
             data-toggle="modal" [attr.data-target]="'#modal-' + video.id">
             Borrar
           </button>
@@ -47,7 +65,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                  <a *ngIf="identity && identity.sub == video.user_id" (click)="deleteVideo(video.id)"
+                  <a *ngIf="identity && identity.sub == video.user.id" (click)="deleteVideo(video.id)"
                     class="btn btn-danger my-1 mx-1" data-dismiss="modal">Borrar</a>
                 </div>
               </div>
@@ -76,17 +94,4 @@
     </nav>
   </div>
   <!--END PAGINACION-->
-</div>
-
-<!--EN CASO DE NO ESTAR LOGUEADO-->
-<div class="container-fluid mt-3" *ngIf="!identity">
-  <div class="jumbotron">
-    <h1 class="display-4">Bienvenido a FavoVideos!</h1>
-    <p class="lead">Crea tu lista de vídeos favoritos de Youtube para verlos cuando quieras.</p>
-    <hr class="my-4">
-    <p class="lead d-flex justify-content-around">
-      <a class="btn btn-primary btn-lg" [routerLink]="['/login']" role="button">Entrar</a>
-      <a class="btn btn-success btn-lg" [routerLink]="['/registro']" role="button">Registrarme</a>
-    </p>
-  </div>
 </div>

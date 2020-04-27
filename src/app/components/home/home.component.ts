@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.loadUser();
     this.actualPageVideos();
+    // console.log(this.identity.sub);
   }
 
   actualPageVideos() {
@@ -78,6 +79,7 @@ export class HomeComponent implements OnInit {
       },
       (error) => {
         console.log(error as any);
+        // alert('error');
       }
     );
   }
