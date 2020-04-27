@@ -1,0 +1,17 @@
+<div class="text-center" *ngIf="!video">
+  Cargando...
+</div>
+
+<div class="mt-3" *ngIf="video">
+  <h1>{{ video.title }}</h1>
+  <hr>
+  <p>
+    <iframe width="560" height="315" [src]="getVideoIframe(video.url)" frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </p>
+
+  <span class="badge badge-secondary">{{ video.user.nick }}</span>
+
+  <!--<p>{{ video.description }}</p>-->
+  <p [innerHtml]="video.description"></p>
+</div>

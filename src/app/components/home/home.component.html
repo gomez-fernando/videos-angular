@@ -19,7 +19,7 @@
       <div class="card-footer">
         <!--BOTONES-->
         <div class="video-buttons mt-3">
-          <a [routerLink]="['/entrada', video.id]" class="btn btn-success my-1 mx-1">Ver</a>
+          <a [routerLink]="['/video', video.id]" class="btn btn-success my-1 mx-1">Ver</a>
           <a *ngIf="identity && identity.sub == video.user_id" [routerLink]="['/editar-favorito', video.id]"
             class="btn btn-warning my-1 mx-1">Editar</a>
           <!-- <a *ngIf="identity && identity.sub == video.user_id" (click)="deletePost(video.id)"
