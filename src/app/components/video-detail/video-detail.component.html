@@ -1,21 +1,23 @@
-<div class="text-center" *ngIf="!video">
-  Cargando...
-</div>
-
-<div class="mt-3" *ngIf="video">
-  <h1 class="text-center">{{ video.title }}</h1>
-  <hr>
-
-  <div class="d-flex justify-content-center">
-    <iframe [src]="getVideoIframe(video.url)" frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="v-container">
+  <div class="text-center" *ngIf="!video">
+    <img class="loader" src="assets/images/loader.gif" alt="">
   </div>
 
-  <p class="text-center mt-3">
+  <div class="mt-3" *ngIf="video">
+    <h1 class="text-center">{{ video.title }}</h1>
+    <hr>
 
-    <span class="badge badge-secondary">{{ identity.nick }}</span>
-  </p>
+    <div class="d-flex justify-content-center">
+      <iframe [src]="getVideoIframe(video.url)" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 
-  <!--<p>{{ video.description }}</p>-->
-  <p [innerHtml]="video.description" class="text-center"></p>
+    <p class="text-center mt-3">
+
+      <span class="badge badge-secondary">{{ identity.nick }}</span>
+    </p>
+
+    <!--<p>{{ video.description }}</p>-->
+    <p [innerHtml]="video.description" class="text-center"></p>
+  </div>
 </div>
