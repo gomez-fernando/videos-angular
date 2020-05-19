@@ -1,7 +1,7 @@
 <!--EN CASO DE NO ESTAR LOGUEADO-->
 <div class="v-container-home">
     <div class="container-fluid mt-3" *ngIf="!identity">
-        <main id="bienvenido" class="pt-4 pb-5">
+        <main id="bienvenido" class="">
             <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -34,7 +34,7 @@
                     <a [routerLink]="['/login']" class="btn btn-primary mt-5 mb-5">Entrar</a>
                 </div>
                 <div class="row justify-content-center">
-                    <a [routerLink]="['/registro']" class="btn btn-primary mt-3 mb-5">Registrarse</a>
+                    <a [routerLink]="['/registro']" class="btn btn-primary mt-3 mb-3">Registrarse</a>
                 </div>
             </div>
         </main>
