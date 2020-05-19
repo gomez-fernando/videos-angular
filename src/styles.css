@@ -4,7 +4,7 @@
 
 .v-container-home {
     min-height: 467px;
-    max-height: 467px;
+    /* max-height: 467px; */
 }
 
 .loader {
